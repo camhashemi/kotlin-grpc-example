@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package grpc.proto;
+
+service UserService {
+  rpc SaveUser(SaveUserRequest) returns (SaveUserResponse);
+}
+
+message SaveUserRequest {
+  string email = 1;
+}
+
+message SaveUserResponse {
+  string id = 1;
+}
