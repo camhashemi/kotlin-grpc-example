@@ -10,6 +10,11 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 object Versions {
     const val coroutines = "1.5.2"
     const val grpc = "1.41.0"
@@ -42,6 +47,7 @@ tasks {
     compileKotlin {
         kotlinOptions {
             freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+            jvmTarget = "1.8"
         }
     }
 }
