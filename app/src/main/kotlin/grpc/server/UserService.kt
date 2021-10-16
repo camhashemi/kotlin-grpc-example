@@ -31,4 +31,17 @@ class UserService : UserServiceGrpcKt.UserServiceCoroutineImplBase() {
                 .build()
         }
     }
+
+    override suspend fun getUser(request: Server.GetUserRequest): Server.User {
+        lock.withLock {
+            val user =
+                users.find { it.id == request.id }
+                    ?: throw Exception("user not found")
+
+            return Server.User.newBuilder()
+                .setId(user.id)
+                .setEmail(user.email)
+                .build()
+        }
+    }
 }

@@ -4,6 +4,7 @@ package grpc.proto;
 
 service UserService {
   rpc SaveUser(SaveUserRequest) returns (SaveUserResponse);
+  rpc GetUser(GetUserRequest) returns (User);
 }
 
 message SaveUserRequest {
@@ -12,4 +13,13 @@ message SaveUserRequest {
 
 message SaveUserResponse {
   string id = 1;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message User {
+  string id = 1;
+  string email = 2;
 }
