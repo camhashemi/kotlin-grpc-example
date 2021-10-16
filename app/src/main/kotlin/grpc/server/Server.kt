@@ -8,6 +8,7 @@ fun main() {
         ServerBuilder
             .forPort(Config.port)
             .addService(UserService())
+            .intercept(LoggingInterceptor)
             .build()
 
     Logger.info("starting server on port ${Config.port}")
